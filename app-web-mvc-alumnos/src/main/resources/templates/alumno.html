@@ -9,8 +9,30 @@
 </head>
 <body>
 
-<div>
-	<div>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">App Web Alumno</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href=@{/alumnos}>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href=@{alumnos/registrar}>Registrar</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container">
+	<div class="row">
 		<h1>Lista de alumnos</h1>
 	</div>
 	
@@ -27,14 +49,14 @@
 	    </tr>
   	  </thead>
   	  <tbody>
-	    <tr th:each="pruebas: ${key}">
-	      <th th:text="${pruebas.id}" scope="row"></th>
-	      <td class="table-danger" th:text="${pruebas.nombre}"></td>
-	      <td class="table-warning" th:text="${pruebas.apellido}"></td>
-	      <td class="table-info" th:text="${pruebas.telefono}"></td>
-	      <td class="table-light" th:text="${pruebas.email}"></td>
-	      <td class="table-success" th:text="${pruebas.fecha_nacimiento}"></td>
-	      <td class="table-primary" th:text="${pruebas.dni}"></td>
+	    <tr th:each="alu: ${alumnos}">
+	      <th th:text="${alu.id}" scope="row"></th>
+	      <td class="table-danger" th:text="${alu.nombre}"></td>
+	      <td class="table-warning" th:text="${alu.apellido}"></td>
+	      <td class="table-info" th:text="${alu.telefono}"></td>
+	      <td class="table-light" th:text="${alu.email}"></td>
+	      <td class="table-success" th:text="${alu.fecha_nacimiento}"></td>
+	      <td class="table-primary" th:text="${alu.dni}"></td>
 	    </tr>
    	  </tbody>
 </table>

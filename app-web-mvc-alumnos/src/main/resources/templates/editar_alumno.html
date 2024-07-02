@@ -21,7 +21,7 @@
           <a class="nav-link active" aria-current="page" th:href=@{/alumnos}>Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href=@{alumno/registrar}>Registrar</a>
+          <a class="nav-link" th:href=@{alumnos/registrar}>Registrar</a>
         </li>
         
       </ul>
@@ -33,9 +33,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-		<h1 class="text-center">Registro nuevo alumno</h1>
+		<h1 class="text-center">Editar alumno</h1>
 			<div class="card-body">
-				<form th:action="@{/alumno}" method="POST" th:object="${alumno}">
+				<form th:action="@{/alumno/{id}(id=${alumno_update.id})}" method="POST" th:object="${alumno_update}">
 					<div class="form-group">
 						<label> Nombre:</label>
 						<input type="text" name="nombre" th:field="*{nombre}" class="form-control" placeholder= "Indique el nombre" required>
@@ -64,7 +64,7 @@
 					<br>
 					
 					<div class="-footer">
-						<button class="btn btn-info">Guardar</button>
+						<button class="btn btn-info">Editar</button>
 					</div>
 				</form>
 			</div>

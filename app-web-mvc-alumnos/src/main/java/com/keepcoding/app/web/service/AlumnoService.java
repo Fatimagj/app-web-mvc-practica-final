@@ -13,7 +13,7 @@ public interface AlumnoService {
 	public Alumno guardarAlumno(Alumno alumno);
 	
 	//método para obtener empleado por id
-	//public Alumno obtenerAlumno(Long id);
+	public Alumno obtenerAlumno(Long id);
 	
 	//método para actualizar o modificar un alumno
 	public Alumno actualizarAlumno(Alumno alumno);

@@ -18,12 +18,14 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" th:href=@{/alumnos}>Home</a>
+          <a class="nav-link active" aria-current="page" th:href=@{/}>Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href=@{alumno/registrar}>Registrar</a>
+          <a class="nav-link active" aria-current="page" th:href=@{/alumnos}>Alumnos</a>
         </li>
-        
+        <li class="nav-item">
+          <a class="nav-link" th:href=@{/registrar}>Registrar</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -35,7 +37,7 @@
 		<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
 		<h1 class="text-center">Registro nuevo alumno</h1>
 			<div class="card-body">
-				<form th:action="@{/alumno}" method="POST" th:object="${alumno}">
+				<form th:action="@{/alumno/registrar}" method="POST" th:object="${alumno}">
 					<div class="form-group">
 						<label> Nombre:</label>
 						<input type="text" name="nombre" th:field="*{nombre}" class="form-control" placeholder= "Indique el nombre" required>

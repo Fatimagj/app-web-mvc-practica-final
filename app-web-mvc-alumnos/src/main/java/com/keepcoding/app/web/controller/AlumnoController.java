@@ -22,14 +22,14 @@ public class AlumnoController {
 		modelo.addAttribute("alumnos", alumnoService.listarAlumno());
 		return "alumno";
 	}
-	@GetMapping("/alumno/registrar")
+	@GetMapping("/registrar")
 	public String newAlumnoForm(Model modelo) {
 		Alumno alumno = new Alumno();
 		modelo.addAttribute("alumno", alumno);
 		return "registrar_alumno";
 	}
 	
-	@PostMapping("/alumno")
+	@PostMapping("/alumno/registrar")
 	public String saveAlumno(@ModelAttribute("alumno") Alumno alumno) {
 		alumnoService.guardarAlumno(alumno);
 		return "redirect:/alumnos";

@@ -7,8 +7,10 @@ INSERT INTO alumno (nombre,apellido,telefono,email,fecha_nacimiento,dni) VALUES 
 INSERT INTO alumno (nombre,apellido,telefono,email,fecha_nacimiento,dni) VALUES ('Enrique','Cido',67412987,'cido@gmail.com','2000-07-11','741852123V');
 INSERT INTO alumno (nombre,apellido,telefono,email,fecha_nacimiento,dni) VALUES ('Dolores','Fuertes',65421987,'detripa@gmail.com','2000-04-15','321754987X');
 
-INSERT INTO usuario(nombre,email,username,password) VALUES ('Laura','laura@gmail.com','laurita','123456789');
-INSERT INTO usuario(nombre,email,username,password) VALUES ('Ana','ana@gmail.com','ani','123456789');
-INSERT INTO usuario(nombre,email,username,password) VALUES ('Luz','luz@gmail.com','luz','123456789');
-INSERT INTO usuario(nombre,email,username,password) VALUES ('Elena','Elena@gmail.com','elena','123456789');
-INSERT INTO usuario(nombre,email,username,password) VALUES ('Pedro','pedro@gmail.com','pedro','123456789');
+INSERT INTO usuario(nombre,email,username,password, activo) VALUES ('Laura','laura@gmail.com','laurita','123456789',true);
+INSERT INTO usuario(nombre,email,username,password, activo) VALUES ('Ana','ana@gmail.com','ani','123456789',true);
+INSERT INTO usuario(nombre,email,username,password, activo) VALUES ('Luz','luz@gmail.com','luz','123456789',true);
+INSERT INTO usuario(nombre,email,username,password, activo) VALUES ('Elena','Elena@gmail.com','elena','123456789',true);
+INSERT INTO usuario(nombre,email,username,password, activo) VALUES ('Pedro','pedro@gmail.com','pedro','123456789',true);
+
+

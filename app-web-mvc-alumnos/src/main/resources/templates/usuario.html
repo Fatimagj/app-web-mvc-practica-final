@@ -11,7 +11,7 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">App Web Alumno</a>
+    <a class="navbar-brand" href="#">Web Alumno</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,8 +24,9 @@
           <a class="nav-link active" aria-current="page" th:href=@{/alumnos}>Alumnos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href=@{/registrar}>Registrar</a>
+          <a class="nav-link" th:href=@{/registrar}>Registrar nuevo alumno</a>
         </li>
+       
       </ul>
     </div>
   </div>
@@ -40,18 +41,20 @@
 	<table class="table">
 	  <thead class="table-dark">
 	    <tr>
-	      <th scope="col">Id</th>
+	      <th scope="col"></th>
 	      <th scope="col">Nombre</th>
-	      <th scope="col">Usurname</th>
+	      <th scope="col">Username</th>
 	      <th scope="col">Email</th>
+	      <th scope="col">Activo</th>
 	    </tr>
   	  </thead>
   	  <tbody>
-	    <tr th:each="usu: ${usuarios}">
+	    <tr th:each="usu: ${usuario}">
 	      <th th:text="${usu.id}" scope="row"></th>
 	      <td class="table-danger" th:text="${usu.nombre}"></td>
-	      <td class="table-warning" th:text="${usu.usurname}"></td>
-	      <td class="table-light" th:text="${usu.email}"></td>
+	      <td class="table-warning" th:text="${usu.username}"></td>
+	      <td class="table-primary" th:text="${usu.email}"></td>
+	      <td class="table-success" th:text="${usu.activo}"></td>
 	    </tr>
    	  </tbody>
 </table>

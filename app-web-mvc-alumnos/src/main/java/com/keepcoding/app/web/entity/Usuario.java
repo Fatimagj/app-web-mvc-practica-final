@@ -24,9 +24,12 @@ public class Usuario implements Serializable{
 		private String username;
 		@Column (nullable = false, length = 100)
 		private String password;
+		private boolean activo;
 		
-		
-		
+		public Usuario() {
+			this.activo = true; //con esto el usuario es activo por defecto
+		}
+
 		public long getId() {
 			return id;
 		}
@@ -65,6 +68,14 @@ public class Usuario implements Serializable{
 
 		public void setPassword(String password) {
 			this.password = password;
+		}
+
+		public boolean isActivo() {
+			return activo;
+		}
+
+		public void setActivo(boolean activo) {
+			this.activo = activo;
 		}
 
 

@@ -15,37 +15,30 @@ public class UsuarioServiceImpl implements UsuarioService{
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
-	//@Override
-	//public List<Usuario> listaUsuario(String datoBuscado, String datoBuscado2) {
-		//if(datoBuscado != null && datoBuscado2 !=null) {
-			//return usuarioRepository.filterEmailAndPassword(datoBuscado, datoBuscado2);
-		//}else
-		//return (List<Usuario>) usuarioController;
-	//}
-	//@Override
-	//public List<Usuario> procesarLogin (String email, String password) {
-		//return usuarioRepository.findByEmailAndPassword(email, password);
 	
-	//}
-	//@Override
-	//public Usuario guardarUsuario(Usuario usuario) {
-		//return usuarioRepository.save(usuario);
-		
-	//}
 	@Override
-	public List<Usuario> findByEmailAndPassword(String email, String password) {
-		if(email != null && password !=null) {
-		return usuarioRepository.findByEmailAndPassword(email, password);
-		}else
-		return null;
+	public List<Usuario> listarusuario(String dato) {
+		
+		return usuarioRepository.findAll();
+	}
+	
+	@Override
+	public Usuario autenticar(String username, String password) {
+		List<Usuario> usuarios= usuarioRepository.findByUsernameAndPassword(username, password);
+		if (usuarios.isEmpty()) {
+			return null;
+		} else {
+			return usuarios.get(0);	
+		}
 	}
 		
 	@Override
 	public Usuario save(Usuario usuario) {
 		return usuarioRepository.save(usuario);
 	}
-}
-				
+
+
+}				
 
 	
 

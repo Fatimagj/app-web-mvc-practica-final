@@ -1,18 +1,13 @@
 package com.keepcoding.app.web.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.keepcoding.app.web.entity.Usuario;
-import com.keepcoding.app.web.repository.UsuarioRepository;
 import com.keepcoding.app.web.service.UsuarioService;
 
 
@@ -22,7 +17,16 @@ public class UsuarioController {
 
 		@Autowired
 		private UsuarioService usuarioService;
-
+		
+		//Para que al registrar un nuevo usuario te devuelva la lista de usuarios registrados con el nuevo registro y de ahí ya tener la opción de alumno
+		@GetMapping("/usuarios")
+		    public String usuariosList(Model modelo) {
+		        modelo.addAttribute("usuario", usuarioService.listarusuario("usuario"));
+		        return "usuario";
+		
+		}
+		
+		//Login
 		
 		@GetMapping({"/", "/login"})
 	    public String index(Model modelo) {
@@ -30,20 +34,21 @@ public class UsuarioController {
 	        return "login";
 	    }
 		
-		
 		@PostMapping("/login")
-		public String procesarLogin(@RequestParam String email, @RequestParam String password, Model modelo) {
-			List<Usuario> usuarioAutentificado = usuarioService.findByEmailAndPassword(email, password);
+		public String login(@ModelAttribute("usuario") Usuario usuario, Model modelo) {
+			Usuario usuarioAutenticado = usuarioService.autenticar(usuario.getUsername(), usuario.getPassword());
 			
-			if(usuarioAutentificado != null && !usuarioAutentificado.isEmpty()) {
-				modelo.addAttribute("usuario", usuarioAutentificado);
+			if(usuarioAutenticado != null) {
 				return "redirect:/alumnos";
 			}else {
-				modelo.addAttribute("Error, el usuario y/o contraseña son incorrectas. Íntentelo de nuevo.");
+				modelo.addAttribute("usuario", usuario);
+				modelo.addAttribute("error", "El usuario y/o contraseña son incorrectas. Intentelo de nuevo.");
 				return "/login";
 			}
 					
 		}
+		
+		//Registrar nuevo usuario
 		
 		@GetMapping("/new")
 		public String newUsuarioForm(Model modelo) {
@@ -54,7 +59,7 @@ public class UsuarioController {
 		@PostMapping("/usuario/registrar")       
 		public String saveUsuario(@ModelAttribute ("usuario") Usuario usuario) {
 			usuarioService.save(usuario);
-			return "redirect:/login";
+			return "redirect:/usuarios";
 		}
-		
+
 }

@@ -11,12 +11,7 @@ import com.keepcoding.app.web.entity.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-	//Usuario findeById(Long id);	
-	
-	
-	//@Query("SELECT u FROM Usuario u WHERE CONCAT(u.email,u.password) LIKE %?1%")
-	//@Query("SELECT u FROM Usuario u WHERE u.email = :email AND u.password = :password")
-	@Query("select u from Usuario u where u.email = ?1 and u.password = ?2")
-	public List<Usuario> findByEmailAndPassword(String  email, String password);
-	
+	@Query("select u from Usuario u where u.username = ?1 and u.password = ?2")
+	public List<Usuario> findByUsernameAndPassword(String  username, String password);
+
 }
